@@ -12,7 +12,7 @@ console.log(`1.listar
 4. remover
 5. sair `)
     const opção = prompt ("escolha uma opção:")
-    let index; 
+    
     switch (opção){
         case "1":
         listar()
@@ -20,7 +20,11 @@ console.log(`1.listar
         break;
         case "2":
             const Rua = prompt("Rua: ");
-            const numero = prompt("numero ");
+            let numeros = [];
+            let numero;
+            while ((numero = prompt('numero (ou deixe em branco para sair): '))) {
+            numeros.push(numero);
+            }
             const bairro = prompt("bairro: ");
             const pessoas = prompt("pessoas: ");
             adicionar({Rua,numero,bairro,pessoas })
@@ -29,24 +33,28 @@ console.log(`1.listar
             break;
         case "3":
             listar()
-            index = parseInt(prompt("numero que vc deseja para autualizar:")) -1;
+            id = parseInt(prompt("numero que vc deseja para autualizar:")) -1;
             const novarua = prompt ("nova rua: ");
-            const novonumero = prompt ("nova numero: ");
+            let novonumeros = [];
+            let novonumero;
+            while ((novonumero = prompt('numero (ou deixe em branco para sair): '))) {
+                novonumeros.push(novonumero);
+            }
             const novobairro = prompt ("novo bairro: ");
             const novaspessoas = prompt ("novas pessoas: ");
-            editar(index, {Rua: novarua,  numero: novonumero, bairro: novobairro, pessoas:novaspessoas});
+            editar(id, {Rua: novarua,  numero: novonumero, bairro: novobairro, pessoas:novaspessoas});
             console.log ("autualizado com sucesso!!")
             menu()
             break;
         case "4":
-        listar()    
-        index = parseInt(prompt("numero que vc deseja para autualizar:")) -1;
-        remover(index); 
-        console.log("contato removido")
-        menu()
-        break;
+            listar()    
+            id = parseInt(prompt("numero que vc deseja para remover")) -1;
+            remover(index); 
+            console.log("residencia removido")
+            menu()
+            break;
         case"5":
-        break;
+            break;
         default:
             console.log("erro!")
             menu()

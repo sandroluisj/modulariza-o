@@ -1,5 +1,6 @@
 let residencia = require('./mudel');
-function remover(index){
-    residencia.splice(index, 1)
+function remover(id){
+    let index = residencia.findIndex(residencias => residencias.id === id)
+    residencia.splice(id, 1)
 }
 module.exports = remover
